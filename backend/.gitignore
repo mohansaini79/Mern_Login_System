@@ -1,0 +1,16 @@
+# ✅ Ignore node_modules (always)
+node_modules/
+
+# ✅ Ignore environment files (your secrets)
+.env
+
+# ✅ Ignore log files
+*.log
+
+# ✅ Ignore build or dist folders
+dist/
+build/
+
+# ✅ Ignore system/mac files
+.DS_Store
+Thumbs.db

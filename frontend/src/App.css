@@ -1,0 +1,291 @@
+/* === BASE STYLES === */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Added system fonts for better compatibility */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s cubic-bezier(0.33, 1, 0.68, 1), color 0.5s cubic-bezier(0.33, 1, 0.68, 1); /* Smoother easing with overshoot */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* === DARK THEME === */
+body.dark {
+  background: linear-gradient(145deg, #0a0a2a, #1e1e5a); /* Richer, deeper gradient */
+  color: #e0e7ff; /* High-contrast text */
+}
+
+body.dark form {
+  background: rgba(30, 30, 70, 0.2); /* Slightly richer transparent backdrop */
+  backdrop-filter: blur(20px) saturate(140%); /* Enhanced glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e0e7ff;
+  box-shadow: 0 12px 40px rgba(108, 99, 255, 0.35); /* Bolder neon shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark form:hover {
+  transform: translateY(-2px); /* Subtle lift on hover */
+  box-shadow: 0 14px 50px rgba(108, 99, 255, 0.45); /* Enhanced glow */
+}
+
+body.dark input {
+  background: rgba(50, 50, 90, 0.25); /* Slightly brighter input */
+  color: #e0e7ff;
+  border: 1px solid rgba(108, 99, 255, 0.4); /* Vibrant neon border */
+  transition: all 0.3s ease;
+}
+
+body.dark input::placeholder {
+  color: #b3c0ff; /* Softer indigo for better contrast */
+}
+
+body.dark input:focus {
+  transform: scale(1.03); /* Slightly bolder focus effect */
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.5);
+  border-color: #6c63ff; /* Neon purple accent */
+}
+
+body.dark button {
+  background: linear-gradient(135deg, #6860f9f5 0%, #f42e60 100%); /* Vibrant neon gradient */
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.6); /* Stronger glow */
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+body.dark button:hover::after {
+  left: 100%; /* Shimmer effect on hover */
+}
+
+body.dark a {
+  color: #c4b5fd; /* Brighter lavender for better visibility */
+}
+
+/* === LIGHT THEME === */
+body.light {
+  background: linear-gradient(145deg, #e0e7ff, #f8fafc); /* Softer, cleaner gradient */
+  color: #0a0a23; /* High-contrast navy */
+}
+
+body.light form {
+  background: rgba(255, 255, 255, 0.9); /* Cleaner glassmorphism */
+  backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0a0a23;
+  box-shadow: 0 14px 45px rgba(108, 99, 255, 0.25); /* Subtle neon shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light form:hover {
+  transform: translateY(-2px); /* Subtle lift on hover */
+  box-shadow: 0 16px 55px rgba(108, 99, 255, 0.35); /* Enhanced glow */
+}
+
+body.light input {
+  background: rgba(245, 247, 255, 0.95); /* Cleaner input background */
+  color: #0a0a23;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+body.light input::placeholder {
+  color: #6b7280; /* Neutral gray for accessibility */
+}
+
+body.light input:focus {
+  transform: scale(1.03); /* Consistent focus effect */
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.4);
+  border-color: #6c63ff;
+}
+
+body.light button {
+  background: linear-gradient(135deg, #6c63ff 0%, #f265c1 100%); /* Bright, cohesive gradient */
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(107, 99, 255, 0.568);
+  position: relative;
+  overflow: hidden;
+}
+
+body.light button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+body.light button:hover::after {
+  left: 100%; /* Shimmer effect on hover */
+}
+
+body.light a {
+  color: #6c63ff; /* Vibrant purple for links */
+}
+
+/* === SHARED FORM STYLES === */
+form {
+  width: 100%;
+  max-width: 440px; /* Slightly wider for better spacing */
+  padding: 45px 35px; /* More padding for comfort */
+  border-radius: 24px; /* Rounder, modern corners */
+  box-shadow: 0 25px 50px rgba(108, 99, 255, 0.3);
+  animation: slideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncier animation */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(60px) scale(0.95); /* More pronounced entrance */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+input {
+  width: 100%;
+  padding: 14px 12px; /* Slightly larger inputs */
+  margin-bottom: 22px;
+  border-radius: 12px; /* Rounder inputs */
+  font-size: 16px; /* Slightly larger for readability */
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1); /* Smoother transitions */
+}
+
+input:focus {
+  outline: none; /* Remove default outline for cleaner look */
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.4); /* Stronger glow */
+}
+
+button {
+  width: 100%;
+  padding: 14px; /* Slightly larger buttons */
+  font-weight: 600; /* Semi-bold for better readability */
+  font-size: 16px;
+  border: none;
+  border-radius: 14px; /* Rounder buttons */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.04); /* More pronounced lift */
+  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.6); /* Stronger neon glow */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.4); /* Accessible focus ring */
+}
+
+p {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 15px; /* Slightly larger for readability */
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 10px rgba(108, 99, 255, 0.6); /* Stronger glow */
+  transform: translateY(-1px); /* Subtle lift */
+}
+
+/* === TOGGLE THEME BUTTON === */
+.toggle-btn-container {
+  position: fixed; /* Fixed for better positioning */
+  top: 24px;
+  right: 24px;
+}
+
+.toggle-btn-container button {
+  padding: 12px 20px;
+  border-radius: 1000px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(108, 99, 255, 0.25); /* Slightly brighter toggle */
+  color: #ffffff;
+  backdrop-filter: blur(10px) saturate(140%);
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.toggle-btn-container button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.toggle-btn-container button:hover::after {
+  left: 100%; /* Shimmer effect */
+}
+
+.toggle-btn-container button:hover {
+  background: rgba(108, 99, 255, 0.4); /* Brighter hover state */
+  transform: scale(1.06); /* Slightly larger scale */
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.5);
+}
+
+.toggle-btn-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.4); /* Accessible focus ring */
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 480px) {
+  form {
+    max-width: 90%; /* Responsive width */
+    padding: 30px 20px; /* Smaller padding on mobile */
+  }
+
+  input, button {
+    font-size: 14px; /* Smaller text for mobile */
+    padding: 12px;
+  }
+
+  .toggle-btn-container {
+    top: 16px;
+    right: 16px;
+  }
+
+  .toggle-btn-container button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;}
+}
